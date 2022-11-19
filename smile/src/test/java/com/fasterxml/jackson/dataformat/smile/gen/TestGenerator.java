@@ -1,6 +1,7 @@
 package com.fasterxml.jackson.dataformat.smile.gen;
 
 import java.io.*;
+import java.nio.file.Files;
 import java.util.HashMap;
 
 import com.fasterxml.jackson.core.JsonParser;
@@ -278,7 +279,7 @@ public class TestGenerator extends BaseTestForSmile
     {
         final SmileFactory smileFactory = new SmileFactory();
         ObjectMapper mapper = new ObjectMapper(smileFactory);
-        File f = File.createTempFile("test", ".tst");
+        File f = Files.createTempFile("test", ".tst").toFile();
         mapper.writeValue(f, Integer.valueOf(3));
 
         JsonParser jp = smileFactory.createParser(f);
